@@ -4,6 +4,8 @@ import '@testing-library/jest-dom';
 import { handlers } from '@/__mocks__/handlers';
 
 /* msw */
+// 초기에 구동을 위해 설정한 msw 서버 인스턴스와 동일한 인스턴스를 사용해야
+// 기존에 모킹된 API의 응답을 변경할 수 있음
 export const server = setupServer(...handlers);
 
 beforeAll(() => {
@@ -12,6 +14,7 @@ beforeAll(() => {
 });
 
 afterEach(() => {
+  // use 함수를 사용하여 동적으로 변경한 모킹 결과를 초기화
   server.resetHandlers();
   vi.clearAllMocks();
 });

@@ -24,12 +24,16 @@ const NavigationBar = () => {
   const { cart, initCart } = useCartStore(state =>
     pick(state, 'cart', 'initCart'),
   );
+
+  // 로그아웃 확인 모달에서 확인 버튼을 클릭했을 경우 로그아웃 실행
+  // 실제로는 로그아웃 역시 API를 통해 실행 -> 예제에서는 편의상 API 없이 쿠키에서 토큰을 삭제
   const handleClickModalAgree = () => {
     remove();
     setIsLogin(false);
     Cookies.remove('access_token');
     toggleIsModalOpened();
   };
+
   const { data, remove } = useProfile({
     config: {
       onSuccess: profile => {
@@ -39,6 +43,7 @@ const NavigationBar = () => {
       enabled: !!isLogin,
     },
   });
+
   const handleClickLogo = () => {
     navigate(pageRoutes.main);
   };
