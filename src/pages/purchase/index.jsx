@@ -52,6 +52,7 @@ const Purchase = () => {
   });
 
   return (
+    //ShippingInformationForm 테스트하기 위해서는 FormProvider 컨텍스트로 감싸진 형태가 되어야 함
     <FormProvider {...methods}>
       <Layout
         containerStyle={{ paddingTop: '30px' }}
