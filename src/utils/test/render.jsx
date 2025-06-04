@@ -13,7 +13,7 @@ export default async (component, options = {}) => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        // ✅ turns retries off
+        // ✅ turns retries off (쿼리 실패시 탠스택에서 기본적으로 3번 재시도를 하는 것을 해제-> 테스트 실행시간 초과 가능성)
         retry: false,
       },
     },
